@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategy Meeting Bingo </title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&family=Lobster&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: Arial; 
+            color: #0F0E0E; 
+            font-family: 'Lato', sans-serif; 
+            font-size: 1vw;   
+        }
+
+        @media only screen and (max-width: 768px) {
+            body{
+                font-size: 2vw; 
+            }
+            
+        }
+
+        header {
+            text-align: center; 
+        }
+
+        h1{
+            padding-top: 20px;
+            padding-bottom: 20px; 
+            font-family: 'Lobster', cursive; 
+            font-size: 3rem; 
+            color: #7B0828; 
+        }
+
+        main {
+            display: flex; 
+            justify-content: center;
+        }
+        section {
+            width: 80%; 
+            display: flex;
+            flex-direction: column; 
+            flex-wrap: wrap;
+            text-align: center; 
+           
+        }
+
+        .row {
+            display:flex; 
+            flex-direction: row; 
+            height: 20%; 
+            
+        }
+        .indiv-square {
+            height:80px;
+            width:18%;
+            border: 3px solid #8DAA9D;
+            padding: 20px 10px 20px 10px; 
+            text-align: center; 
+        }
+
+        @media only screen and (max-width: 768px) {
+            .indiv-square {
+                height:80px;
+                width:18%;
+                border: 3px solid #a2c2b4;
+                padding: 20px 10px 20px 10px; 
+                text-align: center; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+
+         <h1> Strategy Meeting Bingo </h1>
+    </header>
+    
+    <main>  
+        <section class="grid">
+            <div class="row rowA"> 
+                <div class="indiv-square" id="A1"></div>
+                <div class="indiv-square" id="A2"></div>
+                <div class="indiv-square" id="A3"></div>
+                <div class="indiv-square" id="A4"></div>
+                <div class="indiv-square" id="A5"></div>
+            </div>
+            <div class="row rowB"> 
+                <div class="indiv-square" id="B1"></div>
+                <div class="indiv-square" id="B2"></div>
+                <div class="indiv-square" id="B3"></div>
+                <div class="indiv-square" id="B4"></div>
+                <div class="indiv-square" id="B5"></div>
+            </div>
+            <div class="row rowC"> 
+                <div class="indiv-square" id="C1"></div>
+                <div class="indiv-square" id="C2"></div>
+                <div class="indiv-square" id="C3"></div>
+                <div class="indiv-square" id="C4"></div>
+                <div class="indiv-square" id="C5"></div>
+            </div>
+            <div class="row rowD"> 
+                <div class="indiv-square" id="D1"></div>
+                <div class="indiv-square" id="D2"></div>
+                <div class="indiv-square" id="D3"></div>
+                <div class="indiv-square" id="D4"></div>
+                <div class="indiv-square" id="D5"></div>
+            </div>
+            <div class="row rowE"> 
+                <div class="indiv-square" id="E1"></div>
+                <div class="indiv-square" id="E2"></div>
+                <div class="indiv-square" id="E3"></div>
+                <div class="indiv-square" id="E4"></div>
+                <div class="indiv-square" id="E5"></div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        let buzzwordsArray = ["Core Competency", "Buy-In", "Scale", "Best Practice", "Think Outside the Box", "Leverage", "Low Hanging Fruit", "Boil the Ocean", "Pivot", "Bandwidth", "Move the Needle", "Reinvent the Wheel", "Delta", "Deep Dive", "Deliverable", "Incentivise", "Blue Sky", "Drill Down", "Benchmark", "Synergy", "Quick and Dirty", "Critical Success Factor", "Value Add", "Value Proposition", "Inputs", "KPI", "Metric", "Milestone", "Drivers", "Driving Forces", "Scorecard", "Strategy Map", "Risk Indicator", "Threshold", "Value Chain", "Life Cycle"]
+
+        let gridIDs = ["A1", "A2", "A3", "A4", "A5", "B1", "B2", "B3", "B4", "B5", "C1", "C2", "C3", "C4", "C5", "D1", "D2", "D3", "D4", "D5", "E1", "E2", "E3", "E4", "E5"]
+
+        let bingoCard = []
+
+        for (let item of gridIDs) {
+            let squareValue = {}; 
+            squareValue.ID = item;
+            let selectedBuzzword = buzzwordsArray[Math.floor(Math.random()*buzzwordsArray.length)];
+            squareValue.buzzword = selectedBuzzword;
+            bingoCard.push(squareValue);
+            let indexNo = buzzwordsArray.indexOf(selectedBuzzword)
+            buzzwordsArray.splice(indexNo, 1)
+
+        }
+
+        console.log (bingoCard)
+
+
+        // Populate the Grid 
+
+        for (let item of bingoCard) {
+            //let IDstring=`${item.ID}` 
+            document.getElementById(item.ID).innerHTML=item.buzzword
+
+    
+
+        document.querySelector(".grid").addEventListener('click', function(event) {
+            event.target.style.background="#A2C2B4"
+        })
+
+        document.querySelector(".grid").addEventListener('dblclick', function(event) {
+            event.target.style.background="white"
+        })
+}
+    </script>
+</body>
+</html>
